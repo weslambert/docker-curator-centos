@@ -1,7 +1,6 @@
 FROM    centos:7
 
-MAINTAINER      Valeriano Manassero <valeriano.manassero@staff.aruba.it>
-
+MAINTAINER      Wes Lambert
 RUN yum -y update && \
     yum clean all && \
     yum -y install cronie
