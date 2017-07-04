@@ -9,9 +9,7 @@ actions:
   1:
     action: delete_indices
     description: >-
-      Delete indices older than 45 days (based on index name), for logstash-
-      prefixed indices. Ignore the error if the filter does not result in an
-      actionable list of indices (ignore_empty_list) and exit cleanly.
+      Delete indices when $disk_space value (in GB) is exceeded.
     options:
       ignore_empty_list: True
       disable_action: False
@@ -19,9 +17,7 @@ actions:
     - filtertype: pattern
       kind: prefix
       value: logstash-
-    - filtertype: age
-      source: name
-      direction: older
-      timestring: '%Y.%m.%d'
-      unit: days
-      unit_count: 45
+    - filtertype: space
+      source: creation_date
+      use_age: True
+      disk_space: 100
