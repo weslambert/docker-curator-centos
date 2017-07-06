@@ -1,0 +1,7 @@
+#/etc/cron.d/curator-close
+#
+#crontab entry curatort 'close' action
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/localbin:/sbin:/bin?usr/sbin:/usr/bin
+* * * * * root docker exec so-curator curator --config /etc/curator/config/curator.yml --dry-run /etc/curator/action/close.yml >> /var/log/curator/curator.log
