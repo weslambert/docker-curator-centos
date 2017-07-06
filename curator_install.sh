@@ -14,8 +14,8 @@ mkdir -p /var/log/curator
 chown -R 1000:1000 /etc/curator/
 chown -R 1000:1000 /var/log/curator
 cp -av $REPO/etc/cron.d/* /etc/cron.d/
-cp -av $REPO/etc/curator/config/* /etc/curator/config/
-cp -av $REPO/etc/curator/action/* /etc/curator/action/
+cp -av $REPO/etc/config/* /etc/curator/config/
+cp -av $REPO/etc/action/* /etc/curator/action/
 
 cat << EOF >> /etc/nsm/securityonion.conf
 
