@@ -25,18 +25,3 @@ CURATOR_ENABLED="yes"
 CURATOR_OPTIONS=""
 
 EOF
-
-cat << EOF >> /usr/sbin/so-elastic-start
-
-if [ "$CURATOR_ENABLED" = "yes" ]; then
-        echo -n "so-curator: "
-        docker run --name=so-curator \
-                --detach \
-#                --link=so-elasticsearch:elasticsearch \
-                --volume /etc/curator/config/curator.yml:/etc/curator/config/curator.yml:ro \
-                --volume /etc/curator/action/:/etc/curator/action/:ro \
-                --volume /var/log/curator/:/var/log/curator/ \
-                so-curator
-fi
-
-EOF
